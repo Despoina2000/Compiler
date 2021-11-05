@@ -42,12 +42,12 @@ public class Lexer implements ILexer {
 			
 			else if (in.match().group(2) != null)
 			{
-				return nextToken();
+				return TokenClass.ID;
 			}
 			
 			else if (in.match().group(3) != null)
 			{
-				return nextToken();
+				return TokenClass.NUM;
 			}
 			
 			TokenClass token = tokens.get(lexeme);
