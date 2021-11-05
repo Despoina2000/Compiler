@@ -10,6 +10,11 @@ public class Lexer implements ILexer {
 	private static Scanner in;
 	private static final Map<String,TokenClass> tokens = new HashMap<>();
 	
+	Pattern pattern = Pattern.compile("(\\s+|^.?)"+
+			  "|--|-|\\+\\+|\\+|>=|>|<=|<|==|=|!=|!|\\bif\\b|\\b\\belse\\b|\\bwhile\\b|\\bfor\\b"+
+			  "|([a-zA-Z]\\w*)|(\\d+)"+
+			  "|.");
+	
 	static 
 	{
 		for (TokenClass tokenclass : TokenClass.values())
@@ -19,13 +24,38 @@ public class Lexer implements ILexer {
 	@Override
 	public TokenClass nextToken() {
 
-		return null;
+		String matcher = in.findWithinHorizon(pattern, 0);
+		String lexeme;
+		
+		if (matcher == null) 
+		{
+			return TokenClass.EOF;
+		}
+		else 
+		{
+			lexeme = in.match().group(0);
+			
+			if (in.match().group(1) != null)
+			{
+				return nextToken();
+			}
+			
+			else if (in.match().group(2) != null)
+			{
+				return nextToken();
+			}
+			
+			else if (in.match().group(3) != null)
+			{
+				return nextToken();
+			}
+			
+			TokenClass token = tokens.get(lexeme);
+			return (token == null) ? TokenClass.ERROR : token;
+		}
 	}
 	
-	Pattern pettern = Pattern.compile("(\\s+|^.?)"+
-									  "|--|-|\\+\\+|\\+|>=|>|<=|<|==|=|!=|!|\\bif\\b|\\b\\belse\\b|\\bwhile\\b|\\bfor\\b"+
-									  "|([a-zA-Z]\\w*)|(\\d+)"+
-									  "|.");
+
 
 	public Lexer(File inputString) throws FileNotFoundException 
 	{

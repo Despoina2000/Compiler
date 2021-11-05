@@ -1,7 +1,10 @@
-
 public enum TokenClass {
 	
-	IF("if");
+	IF("if"),ELSE("else"),WHILE("while"),FOR("for"),LPAREN("("),
+	RPAREN(")"),LBRACE("{"),RBRACE("}"),SEMI(";"),GTEQ(">="),LTEQ("<="),
+	GT(">"),LT("<"),PLUS("+"),PLUSPLUS("++"),MINUS("-"),MINUSMINUS("--"),
+	STAR("*"),SLASH("/"),ASSIGN("="),NEQ("!="),BANG("!"),EQUALS("=="),
+	ID(null),NUM(null),EOF(null),ERROR(null);
 
 	private final String lexme;
 

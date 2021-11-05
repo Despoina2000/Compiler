@@ -11,6 +11,15 @@ public class LexerDemo {
 		try 
 		{
 			javaLexer = new Lexer(inputstring);
+			
+			System.out.println();
+			
+			while(true) 
+			{
+				TokenClass token = javaLexer.nextToken();
+				System.out.println(token);
+				if(token==TokenClass.EOF) break;
+			}
 		}
 		catch(FileNotFoundException e)
 		{
