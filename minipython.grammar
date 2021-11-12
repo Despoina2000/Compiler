@@ -46,7 +46,8 @@ Tokens
 	line_comment = '#' not_eol* eol; 
 	number = digit+ | (digit+ '.' digit+);
 	id = letter (letter | digit)*;
-	string = '"'not_eol* '"';
+	string1 = '"'not_eol* '"';
+	string2= '''not_eol* ''';
 	/*EXTRA*/
 	assert = 'assert';
 	percent = '%';
@@ -78,4 +79,33 @@ Ignored Tokens
 
 Productions
 	
-    value =   {}  
+	
+	import= import module as_id? complex_mod*|
+		from module import id as_id? complex_comma_id* ;
+	module= complex_id* id;
+	comparison= {}comparison and_or comparison|
+			{}not comparison|
+			{}expression comp_types expression|
+			true|
+			false;		
+	expression= {}expression math_types expression|
+			{}id l_br expression r_br|
+			{}function_call|
+			{}value|
+			{}id|
+			{}len l_par expression r_par|
+			{}max_min l_par value complex_val* r_par|
+			{}l_br expression complex_expr* r_br;
+	as_id= as id;
+	comp_types= less|great|great_eq|less_eq|not_eq|equal;
+	and_or= and |or;
+	max_min= max | min;
+	math_types= plus|minus|mult|dmult|div|percent;
+	complex_comma_id= comma id as_id?;
+	complex_mod= comma module as_id?;
+	complex_id= dot id;
+	complex_val= comma value;
+	complex_expr= comma expression;
+	arglist= {} expression complex_expr*;
+	function_call= {} id l_par arglist? r_par;
+    value = {fun_call} id dot function_call | {num}number |{str1}string1 | {str2}string2 | {none}none;
