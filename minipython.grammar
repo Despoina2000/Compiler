@@ -1,7 +1,3 @@
-/*
-* Test Comments
-*/
-
 Package minipython;
 
 Helpers
@@ -92,8 +88,8 @@ Productions
 				tab* assert expression group_comma_expr?|
 				tab* function_call;
 	
-	import= import module as_id? group_mod*|
-			from module import id as_id? group_comma_id* ;
+	import= import module group_as_id? group_mod*|
+			from module import id group_as_id? group_comma_id* ;
 
 	module= group_id* id;
 
@@ -111,21 +107,25 @@ Productions
 			{}len l_par expression r_par|
 			{}max_min l_par value group_val* r_par|
 			{}l_br expression group_expr* r_br;
-
+/* GROUPS */
 	group_func_stat = function|statement;
 	group_comma_id_eq_val = comma id group_eq_val?;
 	group_eq_val = eq value;
+	group_comma_id= comma id group_as_id?;
+	group_mod= comma module group_as_id?;
+	group_dot_id= dot id;
+	group_comma_val= comma value;
+	group_comma_expr= comma expression;
+	group_group_as_id= as id;
+	
+/* Arithmetic , Logical , Comparison Operators */
 	comp_eqs = eq|minus_eq|div_eq;
-	as_id= as id;
 	comp_types= less|great|great_eq|less_eq|not_eq|equal;
 	and_or= and |or;
 	max_min= max | min;
 	math_types= plus|minus|mult|dmult|div|percent;
-	group_comma_id= comma id as_id?;
-	group_mod= comma module as_id?;
-	group_dot_id= dot id;
-	group_comma_val= comma value;
-	group_comma_expr= comma expression;
+	
+/**/
 	arglist= {} expression group_expr*;
 	function_call= {} id l_par arglist? r_par;
 	value = {fun_call} id dot function_call | {num}number |{str1}string1 | {str2}string2 | {none}none;
