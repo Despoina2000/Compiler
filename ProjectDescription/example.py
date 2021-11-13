@@ -1,17 +1,5 @@
-def fib(n):    # write Fibonacci series up to n
-               a = 0
-               b = 1
-               while a < n:
-                        print a
-                        a = b
-                        b = a + b
-                      
-def funcwithdef(name,university="aueb"):
-       print name, " studies in ", university
-
-    
 import package
-import package from namespace as package_renamed
+from package import package2 as package_renamed
 
 #function call
 class C:
@@ -22,13 +10,26 @@ Class = C
 
 Class.D.meth
 
-#parameter
-def func(foo,bar=None):
-    print(a+b)
+#Boolean
+State = True
+State = False
+State = None
 
-#Pythonic
+#if/elif/else/return/for
+
+if State:
+    return 1
+elif State is None:
+    return 2
+else:
+    return State
+
 for piece in food:
     print(piece)
+
+#parameter
+def func(foo,bar=None):
+    return foo
 
 #Strings
 
