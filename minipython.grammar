@@ -76,26 +76,26 @@ Ignored Tokens
 
 Productions
 
-	/*goal = complex_func_stat* <EOF>;*/
+	/*goal = group_func_stat* <EOF>;*/
 
 	function = def id l_par argument? r_par semi statement;
 
-	argument = id complex_eq_val complex_comma_id_eq_val*;
+	argument = id group_eq_val group_comma_id_eq_val*;
 
 	statement = tab* if comparison semi statement|
 				tab* while comparison semi statement|
 				tab* for id in id semi statement|
 				tab* return expression|
-				tab* print expression complex_comma_expr*|
+				tab* print expression group_comma_expr*|
 				tab* id comp_eqs expression|
 				tab* id l_br expression r_br eq expression|
-				tab* assert expression complex_comma_expr?|
+				tab* assert expression group_comma_expr?|
 				tab* function_call;
 	
-	import= import module as_id? complex_mod*|
-			from module import id as_id? complex_comma_id* ;
+	import= import module as_id? group_mod*|
+			from module import id as_id? group_comma_id* ;
 
-	module= complex_id* id;
+	module= group_id* id;
 
 	comparison= {}comparison and_or comparison|
 			{}not comparison|
@@ -109,23 +109,23 @@ Productions
 			{}value|
 			{}id|
 			{}len l_par expression r_par|
-			{}max_min l_par value complex_val* r_par|
-			{}l_br expression complex_expr* r_br;
+			{}max_min l_par value group_val* r_par|
+			{}l_br expression group_expr* r_br;
 
-	complex_func_stat = function|statement;
-	complex_comma_id_eq_val = comma id complex_eq_val?;
-	complex_eq_val = eq value;
+	group_func_stat = function|statement;
+	group_comma_id_eq_val = comma id group_eq_val?;
+	group_eq_val = eq value;
 	comp_eqs = eq|minus_eq|div_eq;
 	as_id= as id;
 	comp_types= less|great|great_eq|less_eq|not_eq|equal;
 	and_or= and |or;
 	max_min= max | min;
 	math_types= plus|minus|mult|dmult|div|percent;
-	complex_comma_id= comma id as_id?;
-	complex_mod= comma module as_id?;
-	complex_dot_id= dot id;
-	complex_comma_val= comma value;
-	complex_comma_expr= comma expression;
-	arglist= {} expression complex_expr*;
+	group_comma_id= comma id as_id?;
+	group_mod= comma module as_id?;
+	group_dot_id= dot id;
+	group_comma_val= comma value;
+	group_comma_expr= comma expression;
+	arglist= {} expression group_expr*;
 	function_call= {} id l_par arglist? r_par;
 	value = {fun_call} id dot function_call | {num}number |{str1}string1 | {str2}string2 | {none}none;
