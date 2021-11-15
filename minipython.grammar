@@ -3,8 +3,8 @@ Package minipython;
 Helpers
 	digit = ['0' .. '9'];
 	letter = ['a' .. 'z']|['A' .. 'Z']; 
-	cr = 13; 
-	lf = 10;
+	cr = 13; #carriage return character \r
+	lf = 10; #line-feed character \n
 	all = [0..127]; 
 	eol = lf | cr | cr lf ;
 	not_eol = [all - [cr + lf]]; 
