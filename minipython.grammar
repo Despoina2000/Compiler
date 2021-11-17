@@ -90,7 +90,7 @@ Productions
 	
 	
 	
-	expression= {mathimatic}[expression1]:expression math_types [expression2]: expression|
+	expression= /*{mathimatic}[expression1]:expression math_types [expression2]: expression|*/
 			{id_br}id l_br expression r_br|
 			{function_c}function_call|
 			{value}value|
@@ -98,17 +98,24 @@ Productions
 			{len}len l_par expression r_par|
 			{expr_max_min}max_min l_par value group_comma_val* r_par|
 			{group_expression_in_br}l_br expression group_comma_expr* r_br;
-			
+
 import_type = {simply_import} import module group_as_id? group_mod*|
 			{from_inport}from module import id group_as_id? group_comma_id* ;
 
 	module= group_id_dot* id;
 
-	comparison= {comp_and_or} [comparison1]:comparison and_or [comparison2]:comparison|
-			{comp_not}not comparison|
-			{compare_expression} [expression1]: expression comp_types [expression2]:expression|
+	comparison= {compare_expression} [expression1]:expression comp_types [expression2]:expression|
 			{true} true|
 			{false} false;
+
+
+not_comp= {boolean} comparison|{not} not comparison;
+and_comp= {not_from_and} not_comp|{and} and_comp and not_comp;
+or_comp= {and_from_or} and_comp|{or} or_comp or and_comp;
+
+power= {value} value | {dmult} power dmult value;
+multiplication= {power} power|{mult} multiplication mult power|{div} multiplication div power | {percent} multiplication percent power;
+addition_subition={multiplication} multiplication|{add} addition_subition add multiplication|{sub} addition_subition sub multiplication;
 
 
 	
@@ -116,7 +123,7 @@ import_type = {simply_import} import module group_as_id? group_mod*|
 	
 	function_call=  id l_par arglist? r_par;
 	arglist= {group_expression} expression group_comma_expr*;
-	value = {fun_call} id dot function_call | {number} number |{str1}string1 | {str2}string2 | {none}none;
+	value = {fun_call} id dot function_call| {number} number |{str1}string1 | {str2}string2 | {none}none; 
 	
 
 /* GROUPS */
@@ -133,6 +140,5 @@ import_type = {simply_import} import module group_as_id? group_mod*|
 	/* Arithmetic , Logical , Comparison Operators */
 	comp_eqs = {equal}eq|{minus_equal} minus_eq|{div_equal} div_eq;
 	comp_types= {less} less| {great} great| {great_equal} great_eq|{less_equal} less_eq| {not_equal} not_eq| {equal} equal;
-	and_or= {and} and | {or} or;
 	max_min= {max} max | {min} min;
-	math_types= {plus} plus| {minus} minus|{mult} mult| {double_mult} dmult|{div} div| {percent} percent;
+	/*math_types= {plus} plus| {minus} minus|{mult} mult| {double_mult} dmult|{div} div| {percent} percent;*/
