@@ -3,8 +3,8 @@ Package minipython;
 Helpers
 	digit = ['0' .. '9'];
 	letter = ['a' .. 'z']|['A' .. 'Z']; 
-	cr = 13; #carriage return character \r
-	lf = 10; #line-feed character \n
+	cr = 13; /*carriage return character \r*/
+	lf = 10; /*line-feed character \n*/
 	all = [0..127]; 
 	eol = lf | cr | cr lf ;
 	not_eol = [all - [cr + lf]]; 
@@ -72,60 +72,67 @@ Ignored Tokens
 
 Productions
 
-	/*goal = group_func_stat* <EOF>;*/
+	goal = group_func_stat*;
 
 	function = def id l_par argument? r_par semi statement;
 
 	argument = id group_eq_val group_comma_id_eq_val*;
 
-	statement = tab* if comparison semi statement|
-				tab* while comparison semi statement|
-				tab* for id in id semi statement|
-				tab* return expression|
-				tab* print expression group_comma_expr*|
-				tab* id comp_eqs expression|
-				tab* id l_br expression r_br eq expression|
-				tab* assert expression group_comma_expr?|
-				tab* function_call;
+	statement = {if} tab* if comparison semi statement|
+				{while} tab* while comparison semi statement|
+				{for} tab* for [id1]: id in [id2]: id semi statement|
+				{return} tab* return expression|
+				{print} tab* print expression group_comma_expr*|
+				{assing} tab* id comp_eqs expression|
+				{array} tab* id l_br [expression1]:expression r_br eq [expression2]: expression|
+				{assert} tab* assert expression group_comma_expr?|
+				{function_call} tab* function_call;
 	
-	import= import module group_as_id? group_mod*|
-			from module import id group_as_id? group_comma_id* ;
+	
+	
+	expression= {mathimatic}[expression1]:expression math_types [expression2]: expression|
+			{id_br}id l_br expression r_br|
+			{function_c}function_call|
+			{value}value|
+			{identifier}id|
+			{len}len l_par expression r_par|
+			{expr_max_min}max_min l_par value group_comma_val* r_par|
+			{group_expression_in_br}l_br expression group_comma_expr* r_br;
+			
+import_type = {simply_import} import module group_as_id? group_mod*|
+			{from_inport}from module import id group_as_id? group_comma_id* ;
 
-	module= group_id* id;
+	module= group_id_dot* id;
 
-	comparison= {}comparison and_or comparison|
-			{}not comparison|
-			{}expression comp_types expression|
-			true|
-			false;
+	comparison= {comp_and_or} [comparison1]:comparison and_or [comparison2]:comparison|
+			{comp_not}not comparison|
+			{compare_expression} [expression1]: expression comp_types [expression2]:expression|
+			{true} true|
+			{false} false;
 
-	expression= {}expression math_types expression|
-			{}id l_br expression r_br|
-			{}function_call|
-			{}value|
-			{}id|
-			{}len l_par expression r_par|
-			{}max_min l_par value group_val* r_par|
-			{}l_br expression group_expr* r_br;
+
+	
+/**/
+	
+	function_call=  id l_par arglist? r_par;
+	arglist= {group_expression} expression group_comma_expr*;
+	value = {fun_call} id dot function_call | {number} number |{str1}string1 | {str2}string2 | {none}none;
+	
+
 /* GROUPS */
-	group_func_stat = function|statement;
+	group_func_stat = {function} function|{statement}statement;
 	group_comma_id_eq_val = comma id group_eq_val?;
 	group_eq_val = eq value;
 	group_comma_id= comma id group_as_id?;
 	group_mod= comma module group_as_id?;
-	group_dot_id= dot id;
+	group_id_dot= id dot;
 	group_comma_val= comma value;
 	group_comma_expr= comma expression;
-	group_group_as_id= as id;
+	group_as_id= as id;
 	
-/* Arithmetic , Logical , Comparison Operators */
-	comp_eqs = eq|minus_eq|div_eq;
-	comp_types= less|great|great_eq|less_eq|not_eq|equal;
-	and_or= and |or;
-	max_min= max | min;
-	math_types= plus|minus|mult|dmult|div|percent;
-	
-/**/
-	arglist= {} expression group_expr*;
-	function_call= {} id l_par arglist? r_par;
-	value = {fun_call} id dot function_call | {num}number |{str1}string1 | {str2}string2 | {none}none;
+	/* Arithmetic , Logical , Comparison Operators */
+	comp_eqs = {equal}eq|{minus_equal} minus_eq|{div_equal} div_eq;
+	comp_types= {less} less| {great} great| {great_equal} great_eq|{less_equal} less_eq| {not_equal} not_eq| {equal} equal;
+	and_or= {and} and | {or} or;
+	max_min= {max} max | {min} min;
+	math_types= {plus} plus| {minus} minus|{mult} mult| {double_mult} dmult|{div} div| {percent} percent;
