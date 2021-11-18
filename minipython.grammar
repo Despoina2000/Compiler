@@ -90,8 +90,7 @@ Productions
 	
 	
 	
-	expression= /*{mathimatic}[expression1]:expression math_types [expression2]: expression|*/
-			{id_br}id l_br expression r_br|
+	expression=	{id_br}id l_br expression r_br|
 			{function_c}function_call|
 			{value}value|
 			{identifier}id|
@@ -108,11 +107,12 @@ import_type = {simply_import} import module group_as_id? group_mod*|
 			{true} true|
 			{false} false;
 
-
+/*Priorities for comparisons*/
 not_comp= {boolean} comparison|{not} not comparison;
 and_comp= {not_from_and} not_comp|{and} and_comp and not_comp;
 or_comp= {and_from_or} and_comp|{or} or_comp or and_comp;
 
+/*Priorities for mathiatics*/
 power= {value} value | {dmult} power dmult value;
 multiplication= {power} power|{mult} multiplication mult power|{div} multiplication div power | {percent} multiplication percent power;
 addition_subition={multiplication} multiplication|{add} addition_subition plus multiplication|{sub} addition_subition minus multiplication;
@@ -141,4 +141,3 @@ addition_subition={multiplication} multiplication|{add} addition_subition plus m
 	comp_eqs = {equal}eq|{minus_equal} minus_eq|{div_equal} div_eq;
 	comp_types= {less} less| {great} great| {great_equal} great_eq|{less_equal} less_eq| {not_equal} not_eq| {equal} equal;
 	max_min= {max} max | {min} min;
-	/*math_types= {plus} plus| {minus} minus|{mult} mult| {double_mult} dmult|{div} div| {percent} percent;*/
