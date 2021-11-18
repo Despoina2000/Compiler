@@ -115,7 +115,7 @@ or_comp= {and_from_or} and_comp|{or} or_comp or and_comp;
 
 power= {value} value | {dmult} power dmult value;
 multiplication= {power} power|{mult} multiplication mult power|{div} multiplication div power | {percent} multiplication percent power;
-addition_subition={multiplication} multiplication|{add} addition_subition add multiplication|{sub} addition_subition sub multiplication;
+addition_subition={multiplication} multiplication|{add} addition_subition plus multiplication|{sub} addition_subition minus multiplication;
 
 
 	
