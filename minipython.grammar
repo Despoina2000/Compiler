@@ -76,7 +76,7 @@ Productions
 
 	function = def id l_par argument? r_par semi statement;
 
-	argument = id group_eq_val group_comma_id_eq_val*;
+	argument = id group_eq_val? group_comma_id_eq_val*;
 
 	statement = {if} tab* if comparison semi statement|
 				{while} tab* while comparison semi statement|
