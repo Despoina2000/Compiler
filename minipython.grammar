@@ -89,9 +89,9 @@ Productions
 				{function_call} tab* function_call;
 				
 
-	expression= /*{value}value|*/
+	expression= {value}value|
 	
-			{add} addition_subition|					
+			/*{add} addition_subition|*/					
 			{id_br}id l_br expression r_br|
 			{function_c}function_call|
 
@@ -114,7 +114,7 @@ Productions
 	arglist= {group_expression} expression group_comma_expr*;
 	
 	/*Priorities for mathiatics*/
-	power = {value} value | {dmult} power dmult value;
+	power = {expression} expression | {dmult} power dmult value;
 	multiplication= {power} power|{mult} multiplication mult power|{div} multiplication div power | {percent} multiplication percent power;
 	addition_subition={multiplication} multiplication|{add} addition_subition plus multiplication|{sub} addition_subition minus multiplication;
 	
