@@ -42,9 +42,7 @@ Tokens
 	line_comment = '#' not_eol* eol; 
 	number = digit+ | (digit+ '.' digit+);
 	id = letter (letter | digit)*;
-	string1 = '"'not_eol* '"';
-	string2= '''not_eol* ''';
-	/*EXTRA*/
+	string = '"'not_eol* '"' | '''not_eol* ''';
 	assert = 'assert';
 	percent = '%';
 	len = 'len';
@@ -119,7 +117,7 @@ Productions
 	addition_subition={multiplication} multiplication|{add} addition_subition plus multiplication|{sub} addition_subition minus multiplication;
 	
 	
-	value = {fun_call} id dot function_call| {number} number |{str1}string1 | {str2}string2 | {none}none; 
+	value = {fun_call} id dot function_call| {number} number | {str} string | {none}none; 
 	
 	/**/	
 
