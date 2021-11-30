@@ -1,0 +1,145 @@
+Package minipython;
+
+Helpers
+	digit = ['0' .. '9'];
+	letter = ['a' .. 'z']|['A' .. 'Z']; 
+	cr = 13; /*carriage return character \r*/
+	lf = 10; /*line-feed character \n*/
+	all = [0..127]; 
+	eol = lf | cr | cr lf ;
+	not_eol = [all - [cr + lf]]; 
+
+Tokens
+	import = 'import';
+	as = 'as';
+	assert = 'assert';
+	tab = 9;
+	plus = '+';
+	minus = '-';
+	mult = '*';
+	dmult = '**';
+	div = '/';
+	percent = '%';
+	eq = '=';
+	minus_eq = '-=';
+	div_eq = '/=';
+	exclam = '!';
+	dict = 'dict';
+	def = 'def';
+	logic_plus = '&&';
+	l_par = '(';
+	r_par = ')';
+	l_br = '[';
+	r_br = ']';
+	comma=',';
+	if = 'if';
+	while = 'while';
+	and = 'and';
+	or = 'or';
+	not = 'not';
+	for = 'for';
+	in = 'in';
+	print = 'print';
+	return = 'return';
+	less = '<';
+	great = '>';
+	great_eq = '>=';
+	less_eq = '<=';
+	not_eq = '!=';
+	equal = '==';
+	true = 'true';
+	semi = ':';
+	false = 'false';
+	quote = '"';
+	len = 'len';
+	max = 'max';
+	min = 'min';
+	from = 'from';
+	dot = '.';
+	none = 'None';
+	blank = (' ' | lf | cr);
+	line_comment = '#' not_eol* eol; 
+	number = digit+ | (digit+ '.' digit+);
+	id = letter (letter | digit)*;
+	string = '"'not_eol* '"'|'''not_eol* ''';
+	
+
+Ignored Tokens
+	blank, line_comment;
+
+Productions
+
+	goal = group_func_stat*;
+
+	function = def id l_par argument? r_par semi statement;
+
+	argument = id group_eq_val? group_comma_id_eq_val*;
+
+	statement = {if} tab* if or_comp semi statement|
+				{while} tab* while or_comp semi statement|
+				{for} tab* for [id1]: id in [id2]: id semi statement|
+				{return} tab* return expression|
+				{print} tab* print expression group_comma_expr*|
+				{assing} tab* id comp_eqs expression|
+				{array} tab* id l_br [expression1]:expression r_br eq [expression2]: expression|
+				{assert} tab* assert expression group_comma_expr?|
+				{function_call} tab* function_call;
+				
+
+	expression= /*{value}value|*/
+	
+			{add} addition_subition|					
+			{id_br}id l_br expression r_br|
+			{function_c}function_call|
+
+			{identifier}id|
+			{len}len l_par expression r_par|
+			{expr_max_min}max_min l_par value group_comma_val* r_par|
+			{group_expression_in_br}l_br expression group_comma_expr* r_br;
+			
+
+	import_type = {simply_import} import module group_as_id? group_mod*|
+			{from_inport}from module import id group_as_id? group_comma_id* ;
+
+	module= group_id_dot* id;
+
+	comparison= {compare_expression} [expression1]:expression comp_types [expression2]:expression|
+			{true} true|
+			{false} false; 
+
+	function_call=  id l_par arglist? r_par;
+	arglist= {group_expression} expression group_comma_expr*;
+	
+	/*Priorities for mathiatics*/
+	power = {value} value | {dmult} power dmult value;
+	multiplication= {power} power|{mult} multiplication mult power|{div} multiplication div power | {percent} multiplication percent power;
+	addition_subition={multiplication} multiplication|{add} addition_subition plus multiplication|{sub} addition_subition minus multiplication;
+	
+	
+	value = {fun_call} id dot function_call| {number} number | {str} string | {none}none; 
+	
+	/**/	
+
+	/* GROUPS */
+	group_func_stat = {function} function|{statement}statement;
+	group_comma_id_eq_val = comma id group_eq_val?;
+	group_eq_val = eq value;
+	group_comma_id= comma id group_as_id?;
+	group_mod= comma module group_as_id?;
+	group_id_dot= id dot;
+	group_comma_val= comma value;
+	group_comma_expr= comma expression;
+	group_as_id= as id;
+	
+	/* Arithmetic , Logical , Comparison Operators */
+	comp_eqs = {equal}eq|{minus_equal} minus_eq|{div_equal} div_eq;
+	comp_types= {less} less| {great} great| {great_equal} great_eq|{less_equal} less_eq| {not_equal} not_eq| {equal} equal;
+	max_min= {max} max | {min} min;
+	math_types = {plus} plus | {minus} minus | {mult} mult | {div} div | {mod} percent | {pow} dmult;
+	
+
+		
+	/*Priorities for comparisons*/
+	not_comp= {boolean} comparison|{not} not comparison;
+	and_comp= {not_from_and} not_comp|{and} and_comp and not_comp;
+	or_comp= {and_from_or} and_comp|{or} or_comp or and_comp;

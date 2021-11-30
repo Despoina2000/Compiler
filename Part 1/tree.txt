@@ -1,0 +1,55 @@
+
+  >- AGoal
+     `- AStatementGroupFuncStat
+        `- AIfStatement
+           |- if
+           |- AOrOrComp
+           |  |- AAndFromOrOrComp
+           |  |  `- ANotFromAndAndComp
+           |  |     `- ABooleanNotComp
+           |  |        `- ACompareExpressionComparison
+           |  |           |- AIdentifierExpression
+           |  |           |  `- x
+           |  |           |- AGreatEqualCompTypes
+           |  |           |  `- >=
+           |  |           `- AIdentifierExpression
+           |  |              `- y
+           |  |- or
+           |  `- ANotFromAndAndComp
+           |     `- ABooleanNotComp
+           |        `- ACompareExpressionComparison
+           |           |- AIdentifierExpression
+           |           |  `- x
+           |           |- AGreatCompTypes
+           |           |  `- >
+           |           `- AAddExpression
+           |              `- AMultiplicationAdditionSubition
+           |                 `- APowerMultiplication
+           |                    `- AValuePower
+           |                       `- ANumberValue
+           |                          `- 1
+           |- :
+           `- APrintStatement
+              |- print
+              `- AAddExpression
+                 `- AAddAdditionSubition
+                    |- AMultiplicationAdditionSubition
+                    |  `- APowerMultiplication
+                    |     `- AValuePower
+                    |        `- ANumberValue
+                    |           `- 3
+                    |- +
+                    `- AMultMultiplication
+                       |- APowerMultiplication
+                       |  `- ADmultPower
+                       |     |- AValuePower
+                       |     |  `- ANumberValue
+                       |     |     `- 2
+                       |     |- **
+                       |     `- ANumberValue
+                       |        `- 3
+                       |- *
+                       `- AValuePower
+                          `- ANumberValue
+                             `- 4
+
