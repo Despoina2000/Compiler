@@ -137,9 +137,9 @@ Productions
 
 		
 	/*Priorities for comparisons*/
-	not_comp= {boolean} comparison|{not} not comparison;
+	not_comp{->}= {boolean} comparison|{not} not comparison;
 	and_comp= {not_from_and} not_comp|{and} and_comp and not_comp;
-	or_comp= {and_from_or} and_comp|{or} or_comp or and_comp;
+	or_comp{->comparison}= {and_from_or} and_comp{->and_from_or.comparison}|{or} or_comp or and_comp{->New comparison.or(or_comp.comparison,and_comp.comparison)};
 
 	
 	
