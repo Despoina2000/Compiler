@@ -144,5 +144,5 @@ Productions
 	and_comp= {not_from_and} not_comp|{and} and_comp and not_comp;
 	or_comp= {and_from_or} and_comp|{or} or_comp or and_comp;
 
-	Abstract Syntax Tree
+	/*Abstract Syntax Tree*/
 	
