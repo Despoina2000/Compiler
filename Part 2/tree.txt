@@ -1,0 +1,131 @@
+
+  >- AGoal
+     |- AStatementGroupFuncStat
+     |  `- AWhileStatement
+     |     |- AOrComparison
+     |     |  |- ACompareExpressionComparison
+     |     |  |  `- AIdentifierExpression
+     |     |  |  |  `- x
+     |     |  |  |- ALessCompTypes
+     |     |  |  `- AIdentifierExpression
+     |     |  |     `- y
+     |     |  `- ANotComparison
+     |     |     `- ACompareExpressionComparison
+     |     |        `- AIdentifierExpression
+     |     |        |  `- z
+     |     |        |- AGreatEqualCompTypes
+     |     |        `- AIdentifierExpression
+     |     |           `- k
+     |     `- APrintStatement
+     |        |- AStrExpression
+     |        |  `- "hello"
+     |        `- AGroupCommaExpr
+     |           `- ANumberExpression
+     |              `- 3
+     |- AStatementGroupFuncStat
+     |  `- AWhileStatement
+     |     |- ACompareExpressionComparison
+     |     |  `- AIdentifierExpression
+     |     |  |  `- x
+     |     |  |- AGreatCompTypes
+     |     |  `- AIdentifierExpression
+     |     |     `- y
+     |     `- APrintStatement
+     |        |- AStrExpression
+     |        |  `- "hello"
+     |        `- AGroupCommaExpr
+     |           `- ANumberExpression
+     |              `- 3
+     |- AStatementGroupFuncStat
+     |  `- AWhileStatement
+     |     |- ACompareExpressionComparison
+     |     |  `- AIdentifierExpression
+     |     |  |  `- x
+     |     |  |- ALessCompTypes
+     |     |  `- AIdentifierExpression
+     |     |     `- y
+     |     `- APrintStatement
+     |        |- AStrExpression
+     |        |  `- "hello"
+     |        `- AGroupCommaExpr
+     |           `- ANumberExpression
+     |              `- 3
+     |- AStatementGroupFuncStat
+     |  `- AWhileStatement
+     |     |- ACompareExpressionComparison
+     |     |  `- AIdentifierExpression
+     |     |  |  `- x
+     |     |  |- ANotEqualCompTypes
+     |     |  `- AIdentifierExpression
+     |     |     `- y
+     |     `- APrintStatement
+     |        |- AStrExpression
+     |        |  `- "hello"
+     |        `- AGroupCommaExpr
+     |           `- ANumberExpression
+     |              `- 3
+     |- AStatementGroupFuncStat
+     |  `- AWhileStatement
+     |     |- ACompareExpressionComparison
+     |     |  `- AIdentifierExpression
+     |     |  |  `- x
+     |     |  |- AEqualCompTypes
+     |     |  `- AIdentifierExpression
+     |     |     `- y
+     |     `- APrintStatement
+     |        |- AStrExpression
+     |        |  `- "hello"
+     |        `- AGroupCommaExpr
+     |           `- ANumberExpression
+     |              `- 3
+     |- AStatementGroupFuncStat
+     |  `- AWhileStatement
+     |     |- AAndComparison
+     |     |  |- ACompareExpressionComparison
+     |     |  |  `- AIdentifierExpression
+     |     |  |  |  `- x
+     |     |  |  |- AGreatCompTypes
+     |     |  |  `- AIdentifierExpression
+     |     |  |     `- y
+     |     |  `- ACompareExpressionComparison
+     |     |     `- AIdentifierExpression
+     |     |     |  `- x
+     |     |     |- AEqualCompTypes
+     |     |     `- AIdentifierExpression
+     |     |        `- z
+     |     `- APrintStatement
+     |        |- AStrExpression
+     |        |  `- "hello"
+     |        `- AGroupCommaExpr
+     |           `- ANumberExpression
+     |              `- 3
+     `- AStatementGroupFuncStat
+        `- AWhileStatement
+           |- AOrComparison
+           |  |- AAndComparison
+           |  |  |- ACompareExpressionComparison
+           |  |  |  `- AIdentifierExpression
+           |  |  |  |  `- x
+           |  |  |  |- AGreatCompTypes
+           |  |  |  `- AIdentifierExpression
+           |  |  |     `- y
+           |  |  `- ACompareExpressionComparison
+           |  |     `- AIdentifierExpression
+           |  |     |  `- x
+           |  |     |- AEqualCompTypes
+           |  |     `- AIdentifierExpression
+           |  |        `- z
+           |  `- ACompareExpressionComparison
+           |     `- AIdentifierExpression
+           |     |  `- x
+           |     |- ALessCompTypes
+           |     `- AIdentifierExpression
+           |        `- z
+           `- APrintStatement
+              |- AStrExpression
+              |  `- "hello"
+              `- AGroupCommaExpr
+                 `- ANumberExpression
+                    `- 3
+
+

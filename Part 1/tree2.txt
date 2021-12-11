@@ -1,0 +1,257 @@
+
+  >- AGoal
+     |- AStatementGroupFuncStat
+     |  `- AWhileStatement
+     |     |- while
+     |     |- AOrOrComp
+     |     |  |- AAndFromOrOrComp
+     |     |  |  `- ANotFromAndAndComp
+     |     |  |     `- ABooleanNotComp
+     |     |  |        `- ACompareExpressionComparison
+     |     |  |           |- AIdentifierExpression
+     |     |  |           |  `- x
+     |     |  |           |- ALessCompTypes
+     |     |  |           |  `- <
+     |     |  |           `- AIdentifierExpression
+     |     |  |              `- y
+     |     |  |- or
+     |     |  `- ANotFromAndAndComp
+     |     |     `- ANotNotComp
+     |     |        |- not
+     |     |        `- ACompareExpressionComparison
+     |     |           |- AIdentifierExpression
+     |     |           |  `- z
+     |     |           |- AGreatEqualCompTypes
+     |     |           |  `- >=
+     |     |           `- AIdentifierExpression
+     |     |              `- k
+     |     |- :
+     |     `- APrintStatement
+     |        |- print
+     |        |- AAddExpression
+     |        |  `- AMultiplicationAdditionSubition
+     |        |     `- APowerMultiplication
+     |        |        `- AValuePower
+     |        |           `- AStrValue
+     |        |              `- "hello"
+     |        `- AGroupCommaExpr
+     |           |- ,
+     |           `- AAddExpression
+     |              `- AMultiplicationAdditionSubition
+     |                 `- APowerMultiplication
+     |                    `- AValuePower
+     |                       `- ANumberValue
+     |                          `- 3
+     |- AStatementGroupFuncStat
+     |  `- AWhileStatement
+     |     |- while
+     |     |- AAndFromOrOrComp
+     |     |  `- ANotFromAndAndComp
+     |     |     `- ABooleanNotComp
+     |     |        `- ACompareExpressionComparison
+     |     |           |- AIdentifierExpression
+     |     |           |  `- x
+     |     |           |- AGreatCompTypes
+     |     |           |  `- >
+     |     |           `- AIdentifierExpression
+     |     |              `- y
+     |     |- :
+     |     `- APrintStatement
+     |        |- print
+     |        |- AAddExpression
+     |        |  `- AMultiplicationAdditionSubition
+     |        |     `- APowerMultiplication
+     |        |        `- AValuePower
+     |        |           `- AStrValue
+     |        |              `- "hello"
+     |        `- AGroupCommaExpr
+     |           |- ,
+     |           `- AAddExpression
+     |              `- AMultiplicationAdditionSubition
+     |                 `- APowerMultiplication
+     |                    `- AValuePower
+     |                       `- ANumberValue
+     |                          `- 3
+     |- AStatementGroupFuncStat
+     |  `- AWhileStatement
+     |     |- while
+     |     |- AAndFromOrOrComp
+     |     |  `- ANotFromAndAndComp
+     |     |     `- ABooleanNotComp
+     |     |        `- ACompareExpressionComparison
+     |     |           |- AIdentifierExpression
+     |     |           |  `- x
+     |     |           |- ALessCompTypes
+     |     |           |  `- <
+     |     |           `- AIdentifierExpression
+     |     |              `- y
+     |     |- :
+     |     `- APrintStatement
+     |        |- print
+     |        |- AAddExpression
+     |        |  `- AMultiplicationAdditionSubition
+     |        |     `- APowerMultiplication
+     |        |        `- AValuePower
+     |        |           `- AStrValue
+     |        |              `- "hello"
+     |        `- AGroupCommaExpr
+     |           |- ,
+     |           `- AAddExpression
+     |              `- AMultiplicationAdditionSubition
+     |                 `- APowerMultiplication
+     |                    `- AValuePower
+     |                       `- ANumberValue
+     |                          `- 3
+     |- AStatementGroupFuncStat
+     |  `- AWhileStatement
+     |     |- while
+     |     |- AAndFromOrOrComp
+     |     |  `- ANotFromAndAndComp
+     |     |     `- ABooleanNotComp
+     |     |        `- ACompareExpressionComparison
+     |     |           |- AIdentifierExpression
+     |     |           |  `- x
+     |     |           |- ANotEqualCompTypes
+     |     |           |  `- !=
+     |     |           `- AIdentifierExpression
+     |     |              `- y
+     |     |- :
+     |     `- APrintStatement
+     |        |- print
+     |        |- AAddExpression
+     |        |  `- AMultiplicationAdditionSubition
+     |        |     `- APowerMultiplication
+     |        |        `- AValuePower
+     |        |           `- AStrValue
+     |        |              `- "hello"
+     |        `- AGroupCommaExpr
+     |           |- ,
+     |           `- AAddExpression
+     |              `- AMultiplicationAdditionSubition
+     |                 `- APowerMultiplication
+     |                    `- AValuePower
+     |                       `- ANumberValue
+     |                          `- 3
+     |- AStatementGroupFuncStat
+     |  `- AWhileStatement
+     |     |- while
+     |     |- AAndFromOrOrComp
+     |     |  `- ANotFromAndAndComp
+     |     |     `- ABooleanNotComp
+     |     |        `- ACompareExpressionComparison
+     |     |           |- AIdentifierExpression
+     |     |           |  `- x
+     |     |           |- AEqualCompTypes
+     |     |           |  `- ==
+     |     |           `- AIdentifierExpression
+     |     |              `- y
+     |     |- :
+     |     `- APrintStatement
+     |        |- print
+     |        |- AAddExpression
+     |        |  `- AMultiplicationAdditionSubition
+     |        |     `- APowerMultiplication
+     |        |        `- AValuePower
+     |        |           `- AStrValue
+     |        |              `- "hello"
+     |        `- AGroupCommaExpr
+     |           |- ,
+     |           `- AAddExpression
+     |              `- AMultiplicationAdditionSubition
+     |                 `- APowerMultiplication
+     |                    `- AValuePower
+     |                       `- ANumberValue
+     |                          `- 3
+     |- AStatementGroupFuncStat
+     |  `- AWhileStatement
+     |     |- while
+     |     |- AAndFromOrOrComp
+     |     |  `- AAndAndComp
+     |     |     |- ANotFromAndAndComp
+     |     |     |  `- ABooleanNotComp
+     |     |     |     `- ACompareExpressionComparison
+     |     |     |        |- AIdentifierExpression
+     |     |     |        |  `- x
+     |     |     |        |- AGreatCompTypes
+     |     |     |        |  `- >
+     |     |     |        `- AIdentifierExpression
+     |     |     |           `- y
+     |     |     |- and
+     |     |     `- ABooleanNotComp
+     |     |        `- ACompareExpressionComparison
+     |     |           |- AIdentifierExpression
+     |     |           |  `- x
+     |     |           |- AEqualCompTypes
+     |     |           |  `- ==
+     |     |           `- AIdentifierExpression
+     |     |              `- z
+     |     |- :
+     |     `- APrintStatement
+     |        |- print
+     |        |- AAddExpression
+     |        |  `- AMultiplicationAdditionSubition
+     |        |     `- APowerMultiplication
+     |        |        `- AValuePower
+     |        |           `- AStrValue
+     |        |              `- "hello"
+     |        `- AGroupCommaExpr
+     |           |- ,
+     |           `- AAddExpression
+     |              `- AMultiplicationAdditionSubition
+     |                 `- APowerMultiplication
+     |                    `- AValuePower
+     |                       `- ANumberValue
+     |                          `- 3
+     `- AStatementGroupFuncStat
+        `- AWhileStatement
+           |- while
+           |- AOrOrComp
+           |  |- AAndFromOrOrComp
+           |  |  `- AAndAndComp
+           |  |     |- ANotFromAndAndComp
+           |  |     |  `- ABooleanNotComp
+           |  |     |     `- ACompareExpressionComparison
+           |  |     |        |- AIdentifierExpression
+           |  |     |        |  `- x
+           |  |     |        |- AGreatCompTypes
+           |  |     |        |  `- >
+           |  |     |        `- AIdentifierExpression
+           |  |     |           `- y
+           |  |     |- and
+           |  |     `- ABooleanNotComp
+           |  |        `- ACompareExpressionComparison
+           |  |           |- AIdentifierExpression
+           |  |           |  `- x
+           |  |           |- AEqualCompTypes
+           |  |           |  `- ==
+           |  |           `- AIdentifierExpression
+           |  |              `- z
+           |  |- or
+           |  `- ANotFromAndAndComp
+           |     `- ABooleanNotComp
+           |        `- ACompareExpressionComparison
+           |           |- AIdentifierExpression
+           |           |  `- x
+           |           |- ALessCompTypes
+           |           |  `- <
+           |           `- AIdentifierExpression
+           |              `- z
+           |- :
+           `- APrintStatement
+              |- print
+              |- AAddExpression
+              |  `- AMultiplicationAdditionSubition
+              |     `- APowerMultiplication
+              |        `- AValuePower
+              |           `- AStrValue
+              |              `- "hello"
+              `- AGroupCommaExpr
+                 |- ,
+                 `- AAddExpression
+                    `- AMultiplicationAdditionSubition
+                       `- APowerMultiplication
+                          `- AValuePower
+                             `- ANumberValue
+                                `- 3
+
+
