@@ -86,9 +86,7 @@ Productions
 				{function_call} tab* function_call;
 				
 
-	expression= /*{value}value|*/
-	
-			{add} addition_subition|					
+	expression= {add} addition_subition|					
 			{id_br}id l_br expression r_br|
 			{function_c}function_call|
 
