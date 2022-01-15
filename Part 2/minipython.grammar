@@ -11,36 +11,39 @@ Helpers
 
 Tokens
 	import = 'import';
+	def = 'def';
+	l_par = '(';
+	r_par = ')';
+	semi = ':';
 	as = 'as';
-	assert = 'assert';
+	eq = '=';
+	comma=',';
 	tab = 9;
+	if = 'if';
+	while = 'while';
+	for = 'for';
+	in = 'in';
+	return = 'return';
+	print = 'print';
+	minus_eq = '-=';
+	div_eq = '/=';
+	l_br = '[';
+	r_br = ']';
+	assert = 'assert';
 	plus = '+';
 	minus = '-';
 	mult = '*';
 	dmult = '**';
 	div = '/';
 	percent = '%';
-	eq = '=';
-	minus_eq = '-=';
-	div_eq = '/=';
 	exclam = '!';
 	dict = 'dict';
-	def = 'def';
 	logic_plus = '&&';
-	l_par = '(';
-	r_par = ')';
-	l_br = '[';
-	r_br = ']';
-	comma=',';
-	if = 'if';
-	while = 'while';
+	max = 'max';
+	min = 'min';
 	and = 'and';
 	or = 'or';
 	not = 'not';
-	for = 'for';
-	in = 'in';
-	print = 'print';
-	return = 'return';
 	less = '<';
 	great = '>';
 	great_eq = '>=';
@@ -48,20 +51,17 @@ Tokens
 	not_eq = '!=';
 	equal = '==';
 	true = 'true';
-	semi = ':';
 	false = 'false';
 	quote = '"';
 	len = 'len';
-	max = 'max';
-	min = 'min';
 	from = 'from';
 	dot = '.';
 	none = 'None';
-	blank = (' ' | lf | cr);
 	line_comment = '#' not_eol* eol; 
 	number = digit+ | (digit+ '.' digit+);
 	id = letter (letter | digit)*;
 	string = '"'not_eol* '"'|'''not_eol* ''';
+	blank = (' ' | lf | cr);
 	
 
 Ignored Tokens

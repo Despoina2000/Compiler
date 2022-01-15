@@ -236,7 +236,6 @@ public class Lexer
                     case 3:
                         {
                             Token token = new3(
-                                getText(accept_length),
                                 start_line + 1,
                                 start_pos + 1);
                             pushBack(accept_length);
@@ -287,6 +286,7 @@ public class Lexer
                     case 8:
                         {
                             Token token = new8(
+                                getText(accept_length),
                                 start_line + 1,
                                 start_pos + 1);
                             pushBack(accept_length);
@@ -752,57 +752,57 @@ public class Lexer
     }
 
     Token new0(int line, int pos) { return new TImport(line, pos); }
-    Token new1(int line, int pos) { return new TAs(line, pos); }
-    Token new2(int line, int pos) { return new TAssert(line, pos); }
-    Token new3(String text, int line, int pos) { return new TTab(text, line, pos); }
-    Token new4(int line, int pos) { return new TPlus(line, pos); }
-    Token new5(int line, int pos) { return new TMinus(line, pos); }
-    Token new6(int line, int pos) { return new TMult(line, pos); }
-    Token new7(int line, int pos) { return new TDmult(line, pos); }
-    Token new8(int line, int pos) { return new TDiv(line, pos); }
-    Token new9(int line, int pos) { return new TPercent(line, pos); }
-    Token new10(int line, int pos) { return new TEq(line, pos); }
-    Token new11(int line, int pos) { return new TMinusEq(line, pos); }
-    Token new12(int line, int pos) { return new TDivEq(line, pos); }
-    Token new13(int line, int pos) { return new TExclam(line, pos); }
-    Token new14(int line, int pos) { return new TDict(line, pos); }
-    Token new15(int line, int pos) { return new TDef(line, pos); }
-    Token new16(int line, int pos) { return new TLogicPlus(line, pos); }
-    Token new17(int line, int pos) { return new TLPar(line, pos); }
-    Token new18(int line, int pos) { return new TRPar(line, pos); }
-    Token new19(int line, int pos) { return new TLBr(line, pos); }
-    Token new20(int line, int pos) { return new TRBr(line, pos); }
-    Token new21(int line, int pos) { return new TComma(line, pos); }
-    Token new22(int line, int pos) { return new TIf(line, pos); }
-    Token new23(int line, int pos) { return new TWhile(line, pos); }
-    Token new24(int line, int pos) { return new TAnd(line, pos); }
-    Token new25(int line, int pos) { return new TOr(line, pos); }
-    Token new26(int line, int pos) { return new TNot(line, pos); }
-    Token new27(int line, int pos) { return new TFor(line, pos); }
-    Token new28(int line, int pos) { return new TIn(line, pos); }
-    Token new29(int line, int pos) { return new TPrint(line, pos); }
-    Token new30(int line, int pos) { return new TReturn(line, pos); }
-    Token new31(int line, int pos) { return new TLess(line, pos); }
-    Token new32(int line, int pos) { return new TGreat(line, pos); }
-    Token new33(int line, int pos) { return new TGreatEq(line, pos); }
-    Token new34(int line, int pos) { return new TLessEq(line, pos); }
-    Token new35(int line, int pos) { return new TNotEq(line, pos); }
-    Token new36(int line, int pos) { return new TEqual(line, pos); }
-    Token new37(int line, int pos) { return new TTrue(line, pos); }
-    Token new38(int line, int pos) { return new TSemi(line, pos); }
-    Token new39(int line, int pos) { return new TFalse(line, pos); }
-    Token new40(int line, int pos) { return new TQuote(line, pos); }
-    Token new41(int line, int pos) { return new TLen(line, pos); }
-    Token new42(int line, int pos) { return new TMax(line, pos); }
-    Token new43(int line, int pos) { return new TMin(line, pos); }
+    Token new1(int line, int pos) { return new TDef(line, pos); }
+    Token new2(int line, int pos) { return new TLPar(line, pos); }
+    Token new3(int line, int pos) { return new TRPar(line, pos); }
+    Token new4(int line, int pos) { return new TSemi(line, pos); }
+    Token new5(int line, int pos) { return new TAs(line, pos); }
+    Token new6(int line, int pos) { return new TEq(line, pos); }
+    Token new7(int line, int pos) { return new TComma(line, pos); }
+    Token new8(String text, int line, int pos) { return new TTab(text, line, pos); }
+    Token new9(int line, int pos) { return new TIf(line, pos); }
+    Token new10(int line, int pos) { return new TWhile(line, pos); }
+    Token new11(int line, int pos) { return new TFor(line, pos); }
+    Token new12(int line, int pos) { return new TIn(line, pos); }
+    Token new13(int line, int pos) { return new TReturn(line, pos); }
+    Token new14(int line, int pos) { return new TPrint(line, pos); }
+    Token new15(int line, int pos) { return new TMinusEq(line, pos); }
+    Token new16(int line, int pos) { return new TDivEq(line, pos); }
+    Token new17(int line, int pos) { return new TLBr(line, pos); }
+    Token new18(int line, int pos) { return new TRBr(line, pos); }
+    Token new19(int line, int pos) { return new TAssert(line, pos); }
+    Token new20(int line, int pos) { return new TPlus(line, pos); }
+    Token new21(int line, int pos) { return new TMinus(line, pos); }
+    Token new22(int line, int pos) { return new TMult(line, pos); }
+    Token new23(int line, int pos) { return new TDmult(line, pos); }
+    Token new24(int line, int pos) { return new TDiv(line, pos); }
+    Token new25(int line, int pos) { return new TPercent(line, pos); }
+    Token new26(int line, int pos) { return new TExclam(line, pos); }
+    Token new27(int line, int pos) { return new TDict(line, pos); }
+    Token new28(int line, int pos) { return new TLogicPlus(line, pos); }
+    Token new29(int line, int pos) { return new TMax(line, pos); }
+    Token new30(int line, int pos) { return new TMin(line, pos); }
+    Token new31(int line, int pos) { return new TAnd(line, pos); }
+    Token new32(int line, int pos) { return new TOr(line, pos); }
+    Token new33(int line, int pos) { return new TNot(line, pos); }
+    Token new34(int line, int pos) { return new TLess(line, pos); }
+    Token new35(int line, int pos) { return new TGreat(line, pos); }
+    Token new36(int line, int pos) { return new TGreatEq(line, pos); }
+    Token new37(int line, int pos) { return new TLessEq(line, pos); }
+    Token new38(int line, int pos) { return new TNotEq(line, pos); }
+    Token new39(int line, int pos) { return new TEqual(line, pos); }
+    Token new40(int line, int pos) { return new TTrue(line, pos); }
+    Token new41(int line, int pos) { return new TFalse(line, pos); }
+    Token new42(int line, int pos) { return new TQuote(line, pos); }
+    Token new43(int line, int pos) { return new TLen(line, pos); }
     Token new44(int line, int pos) { return new TFrom(line, pos); }
     Token new45(int line, int pos) { return new TDot(line, pos); }
     Token new46(int line, int pos) { return new TNone(line, pos); }
-    Token new47(String text, int line, int pos) { return new TBlank(text, line, pos); }
-    Token new48(String text, int line, int pos) { return new TLineComment(text, line, pos); }
-    Token new49(String text, int line, int pos) { return new TNumber(text, line, pos); }
-    Token new50(String text, int line, int pos) { return new TId(text, line, pos); }
-    Token new51(String text, int line, int pos) { return new TString(text, line, pos); }
+    Token new47(String text, int line, int pos) { return new TLineComment(text, line, pos); }
+    Token new48(String text, int line, int pos) { return new TNumber(text, line, pos); }
+    Token new49(String text, int line, int pos) { return new TId(text, line, pos); }
+    Token new50(String text, int line, int pos) { return new TString(text, line, pos); }
+    Token new51(String text, int line, int pos) { return new TBlank(text, line, pos); }
 
     private int getChar() throws IOException
     {
@@ -986,7 +986,7 @@ public class Lexer
     private static int[][] accept;
 /*  {
         // INITIAL
-        {-1, 3, 47, 47, 47, 13, 40, -1, 9, -1, -1, 17, 18, 6, 4, 21, 5, 45, 8, 49, 38, 31, 10, 32, 50, 50, 19, 20, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 35, -1, 51, -1, 48, 48, 16, -1, 51, 7, 11, 12, -1, 34, 36, 33, 50, 50, 50, 50, 50, 1, 50, 50, 50, 50, 50, 22, 50, 28, 50, 50, 50, 50, 25, 50, 50, 50, 50, 48, 49, 50, 24, 50, 15, 50, 50, 27, 50, 50, 41, 42, 43, 26, 50, 50, 50, 50, 46, 50, 14, 50, 44, 50, 50, 50, 37, 50, 50, 39, 50, 29, 50, 23, 2, 0, 30, },
+        {-1, 8, 51, 51, 51, 26, 42, -1, 25, -1, -1, 2, 3, 22, 20, 7, 21, 45, 24, 48, 4, 34, 6, 35, 49, 49, 17, 18, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 38, -1, 50, -1, 47, 47, 28, -1, 50, 23, 15, 16, -1, 37, 39, 36, 49, 49, 49, 49, 49, 5, 49, 49, 49, 49, 49, 9, 49, 12, 49, 49, 49, 49, 32, 49, 49, 49, 49, 47, 48, 49, 31, 49, 1, 49, 49, 11, 49, 49, 43, 29, 30, 33, 49, 49, 49, 49, 46, 49, 27, 49, 44, 49, 49, 49, 40, 49, 49, 41, 49, 14, 49, 10, 19, 0, 13, },
 
     };*/
 

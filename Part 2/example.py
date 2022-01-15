@@ -1,5 +1,2 @@
-
- def x():
-	y = 5
-def x():
-	k =10 
+def add(x,y):
+   return x + y

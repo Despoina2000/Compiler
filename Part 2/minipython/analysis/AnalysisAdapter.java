@@ -373,17 +373,97 @@ public class AnalysisAdapter implements Analysis
         defaultCase(node);
     }
 
+    public void caseTDef(TDef node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseTLPar(TLPar node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseTRPar(TRPar node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseTSemi(TSemi node)
+    {
+        defaultCase(node);
+    }
+
     public void caseTAs(TAs node)
     {
         defaultCase(node);
     }
 
-    public void caseTAssert(TAssert node)
+    public void caseTEq(TEq node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseTComma(TComma node)
     {
         defaultCase(node);
     }
 
     public void caseTTab(TTab node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseTIf(TIf node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseTWhile(TWhile node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseTFor(TFor node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseTIn(TIn node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseTReturn(TReturn node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseTPrint(TPrint node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseTMinusEq(TMinusEq node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseTDivEq(TDivEq node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseTLBr(TLBr node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseTRBr(TRBr node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseTAssert(TAssert node)
     {
         defaultCase(node);
     }
@@ -418,21 +498,6 @@ public class AnalysisAdapter implements Analysis
         defaultCase(node);
     }
 
-    public void caseTEq(TEq node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseTMinusEq(TMinusEq node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseTDivEq(TDivEq node)
-    {
-        defaultCase(node);
-    }
-
     public void caseTExclam(TExclam node)
     {
         defaultCase(node);
@@ -443,47 +508,17 @@ public class AnalysisAdapter implements Analysis
         defaultCase(node);
     }
 
-    public void caseTDef(TDef node)
-    {
-        defaultCase(node);
-    }
-
     public void caseTLogicPlus(TLogicPlus node)
     {
         defaultCase(node);
     }
 
-    public void caseTLPar(TLPar node)
+    public void caseTMax(TMax node)
     {
         defaultCase(node);
     }
 
-    public void caseTRPar(TRPar node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseTLBr(TLBr node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseTRBr(TRBr node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseTComma(TComma node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseTIf(TIf node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseTWhile(TWhile node)
+    public void caseTMin(TMin node)
     {
         defaultCase(node);
     }
@@ -499,26 +534,6 @@ public class AnalysisAdapter implements Analysis
     }
 
     public void caseTNot(TNot node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseTFor(TFor node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseTIn(TIn node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseTPrint(TPrint node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseTReturn(TReturn node)
     {
         defaultCase(node);
     }
@@ -558,11 +573,6 @@ public class AnalysisAdapter implements Analysis
         defaultCase(node);
     }
 
-    public void caseTSemi(TSemi node)
-    {
-        defaultCase(node);
-    }
-
     public void caseTFalse(TFalse node)
     {
         defaultCase(node);
@@ -578,16 +588,6 @@ public class AnalysisAdapter implements Analysis
         defaultCase(node);
     }
 
-    public void caseTMax(TMax node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseTMin(TMin node)
-    {
-        defaultCase(node);
-    }
-
     public void caseTFrom(TFrom node)
     {
         defaultCase(node);
@@ -599,11 +599,6 @@ public class AnalysisAdapter implements Analysis
     }
 
     public void caseTNone(TNone node)
-    {
-        defaultCase(node);
-    }
-
-    public void caseTBlank(TBlank node)
     {
         defaultCase(node);
     }
@@ -624,6 +619,11 @@ public class AnalysisAdapter implements Analysis
     }
 
     public void caseTString(TString node)
+    {
+        defaultCase(node);
+    }
+
+    public void caseTBlank(TBlank node)
     {
         defaultCase(node);
     }

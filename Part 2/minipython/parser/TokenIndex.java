@@ -14,217 +14,217 @@ class TokenIndex extends AnalysisAdapter
         index = 0;
     }
 
-    public void caseTAs(TAs node)
+    public void caseTDef(TDef node)
     {
         index = 1;
     }
 
-    public void caseTAssert(TAssert node)
+    public void caseTLPar(TLPar node)
     {
         index = 2;
     }
 
-    public void caseTTab(TTab node)
+    public void caseTRPar(TRPar node)
     {
         index = 3;
     }
 
-    public void caseTPlus(TPlus node)
+    public void caseTSemi(TSemi node)
     {
         index = 4;
     }
 
-    public void caseTMinus(TMinus node)
+    public void caseTAs(TAs node)
     {
         index = 5;
     }
 
-    public void caseTMult(TMult node)
+    public void caseTEq(TEq node)
     {
         index = 6;
     }
 
-    public void caseTDmult(TDmult node)
+    public void caseTComma(TComma node)
     {
         index = 7;
     }
 
-    public void caseTDiv(TDiv node)
+    public void caseTTab(TTab node)
     {
         index = 8;
     }
 
-    public void caseTPercent(TPercent node)
+    public void caseTIf(TIf node)
     {
         index = 9;
     }
 
-    public void caseTEq(TEq node)
+    public void caseTWhile(TWhile node)
     {
         index = 10;
     }
 
-    public void caseTMinusEq(TMinusEq node)
+    public void caseTFor(TFor node)
     {
         index = 11;
     }
 
-    public void caseTDivEq(TDivEq node)
+    public void caseTIn(TIn node)
     {
         index = 12;
     }
 
-    public void caseTExclam(TExclam node)
+    public void caseTReturn(TReturn node)
     {
         index = 13;
     }
 
-    public void caseTDict(TDict node)
+    public void caseTPrint(TPrint node)
     {
         index = 14;
     }
 
-    public void caseTDef(TDef node)
+    public void caseTMinusEq(TMinusEq node)
     {
         index = 15;
     }
 
-    public void caseTLogicPlus(TLogicPlus node)
+    public void caseTDivEq(TDivEq node)
     {
         index = 16;
     }
 
-    public void caseTLPar(TLPar node)
+    public void caseTLBr(TLBr node)
     {
         index = 17;
     }
 
-    public void caseTRPar(TRPar node)
+    public void caseTRBr(TRBr node)
     {
         index = 18;
     }
 
-    public void caseTLBr(TLBr node)
+    public void caseTAssert(TAssert node)
     {
         index = 19;
     }
 
-    public void caseTRBr(TRBr node)
+    public void caseTPlus(TPlus node)
     {
         index = 20;
     }
 
-    public void caseTComma(TComma node)
+    public void caseTMinus(TMinus node)
     {
         index = 21;
     }
 
-    public void caseTIf(TIf node)
+    public void caseTMult(TMult node)
     {
         index = 22;
     }
 
-    public void caseTWhile(TWhile node)
+    public void caseTDmult(TDmult node)
     {
         index = 23;
     }
 
-    public void caseTAnd(TAnd node)
+    public void caseTDiv(TDiv node)
     {
         index = 24;
     }
 
-    public void caseTOr(TOr node)
+    public void caseTPercent(TPercent node)
     {
         index = 25;
     }
 
-    public void caseTNot(TNot node)
+    public void caseTExclam(TExclam node)
     {
         index = 26;
     }
 
-    public void caseTFor(TFor node)
+    public void caseTDict(TDict node)
     {
         index = 27;
     }
 
-    public void caseTIn(TIn node)
+    public void caseTLogicPlus(TLogicPlus node)
     {
         index = 28;
     }
 
-    public void caseTPrint(TPrint node)
+    public void caseTMax(TMax node)
     {
         index = 29;
     }
 
-    public void caseTReturn(TReturn node)
+    public void caseTMin(TMin node)
     {
         index = 30;
     }
 
-    public void caseTLess(TLess node)
+    public void caseTAnd(TAnd node)
     {
         index = 31;
     }
 
-    public void caseTGreat(TGreat node)
+    public void caseTOr(TOr node)
     {
         index = 32;
     }
 
-    public void caseTGreatEq(TGreatEq node)
+    public void caseTNot(TNot node)
     {
         index = 33;
     }
 
-    public void caseTLessEq(TLessEq node)
+    public void caseTLess(TLess node)
     {
         index = 34;
     }
 
-    public void caseTNotEq(TNotEq node)
+    public void caseTGreat(TGreat node)
     {
         index = 35;
     }
 
-    public void caseTEqual(TEqual node)
+    public void caseTGreatEq(TGreatEq node)
     {
         index = 36;
     }
 
-    public void caseTTrue(TTrue node)
+    public void caseTLessEq(TLessEq node)
     {
         index = 37;
     }
 
-    public void caseTSemi(TSemi node)
+    public void caseTNotEq(TNotEq node)
     {
         index = 38;
     }
 
-    public void caseTFalse(TFalse node)
+    public void caseTEqual(TEqual node)
     {
         index = 39;
     }
 
-    public void caseTQuote(TQuote node)
+    public void caseTTrue(TTrue node)
     {
         index = 40;
     }
 
-    public void caseTLen(TLen node)
+    public void caseTFalse(TFalse node)
     {
         index = 41;
     }
 
-    public void caseTMax(TMax node)
+    public void caseTQuote(TQuote node)
     {
         index = 42;
     }
 
-    public void caseTMin(TMin node)
+    public void caseTLen(TLen node)
     {
         index = 43;
     }
