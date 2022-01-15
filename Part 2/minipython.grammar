@@ -2,7 +2,8 @@ Package minipython;
 
 Helpers
 	digit = ['0' .. '9'];
-	letter = ['a' .. 'z']|['A' .. 'Z']; 
+	letter = ['a' .. 'z']|['A' .. 'Z'];
+	space = 32; 
 	cr = 13; /*carriage return character \r*/
 	lf = 10; /*line-feed character \n*/
 	all = [0..127]; 
@@ -57,11 +58,11 @@ Tokens
 	from = 'from';
 	dot = '.';
 	none = 'None';
-	line_comment = '#' not_eol* eol; 
+	line_comment = '#' not_eol* eol;
 	number = digit+ | (digit+ '.' digit+);
 	id = letter (letter | digit)*;
 	string = '"'not_eol* '"'|'''not_eol* ''';
-	blank = (' ' | lf | cr);
+	blank = (space | lf | cr lf);
 	
 
 Ignored Tokens
@@ -69,77 +70,82 @@ Ignored Tokens
 
 Productions
 
-	goal = group_func_stat* {->New goal([group_func_stat])};
+	goal = group_func_stat*;
 
-	function = def id l_par argument? r_par semi statement{->New function(id,[argument],statement)};
+	function = def id l_par argument? r_par semi statement;
 
-	argument = id group_eq_val? group_comma_id_eq_val*{->New argument(id,[group_eq_val],[group_comma_id_eq_val])};
+	argument = id group_eq_val? group_comma_id_eq_val*;
 
-	statement = {if} tab* if or_comp semi statement{->New statement.if(or_comp.comparison,statement)}|
-				{while} tab* while or_comp semi statement{->New statement.while(or_comp.comparison,statement)}|
-				{for} tab* for [id1]: id in [id2]: id semi statement {->New statement.for(id1,id2,statement)}|
-				{return} tab* return expression{->New statement.return(expression)}|
-				{print} tab* print expression group_comma_expr*{->New statement.print(expression,[group_comma_expr])}|
-				{assing} tab* id comp_eqs expression {->New statement.assing(id,comp_eqs,expression)}|
-				{array} tab* id l_br [expression1]:expression r_br eq [expression2]: expression{->New statement.array(id,expression1,expression2)}|
-				{assert} tab* assert expression group_comma_expr? {->New statement.assert(expression,[group_comma_expr])}|
-				{function_call} tab* function_call{->New statement.function_call(function_call)};
+	statement = {if} tab* if or_comp semi statement|
+				{while} tab* while or_comp semi statement|
+				{for} tab* for [id1]: id in [id2]: id semi statement |
+				{return} tab* return expression|
+				{print} tab* print expression group_comma_expr*|
+				{assing} tab* id comp_eqs expression|
+				{array} tab* id l_br [expression1]:expression r_br eq [expression2]: expression|
+				{assert} tab* assert expression group_comma_expr? |
+				{function_call} tab* function_call;
 				
 
-	expression= {add} addition_subition {-> addition_subition.expression}|					
-			{id_br}id l_br expression r_br{->New expression.id_br(id,expression)}|
-			{function_c}function_call {->New expression.function_c(function_call)}|
-			{identifier}id {->New expression.identifier(id)}|
-			{len}len l_par expression r_par {->New expression.len(expression)}|
-			{expr_max_min}max_min l_par value group_comma_val* r_par {->New expression.expr_max_min(max_min,value.expression,[group_comma_val]) }|
-			{group_expression_in_br}l_br expression group_comma_expr* r_br{->New expression.group_expression_in_br(expression,[group_comma_expr])};
-			
+	expr={something} something|
+	{id_br}id l_br expression r_br|
+			{group_expression_in_br}l_br expression group_comma_expr* r_br
+			| {len}len l_par expression r_par;
 
-	import_type = {simply_import} import module group_as_id? group_mod* {->New import_type.simply_import([group_as_id],[group_mod]) }|
-			{from_import}from module import id group_as_id? group_comma_id* {->New import_type.from_import(id,[group_as_id],[group_comma_id])} ;
+	something=
+			{function_c}function_call |
+			{identifier}id |
+			 {value} value|
+			{expr_max_min}max_min l_par value group_comma_val* r_par;	
 
-	module= group_id_dot* id {->New module([group_id_dot],id)};
+	import_type = {simply_import} import module group_as_id? group_mod* |
+			{from_import}from module import id group_as_id? group_comma_id*  ;
 
-	comparison= {compare_expression} [expression1]:expression comp_types [expression2]:expression {->New comparison.compare_expression(expression1,comp_types,expression2)}|
-			{true} true {->New comparison.true()}|
-			{false} false {->New comparison.false()}; 
+	module= group_id_dot* id ;
 
-	function_call=  id l_par arglist? r_par {->New function_call(id,[arglist])};
-	arglist= {group_expression} expression group_comma_expr* {->New arglist.group_expression(expression,[group_comma_expr])};
+	comparison= {compare_expression} [expression1]:expression comp_types [expression2]:expression |
+			{true} true |
+			{false} false ; 
+
+	function_call=  id l_par arglist? r_par ;
+	arglist= {group_expression} expression group_comma_expr* ;
 	
 	/*Priorities for mathiatics*/
-	power{->expression} = {value} value {->value.expression} | {dmult} power dmult value{->New expression.dmult(power.expression,value.expression)};
-	multiplication{->expression}= {power} power{->power.expression}|{mult} multiplication mult power{->New expression.mult(multiplication.expression,power.expression)}|{div} multiplication div power{->New expression.div(multiplication.expression,power.expression)} | {percent} multiplication percent power{->New expression.percent(multiplication.expression,power.expression)};
-	addition_subition{->expression}={multiplication} multiplication {->multiplication.expression}|{add} addition_subition plus multiplication {->New expression.add(addition_subition.expression,multiplication.expression)}|{sub} addition_subition minus multiplication{->New expression.sub(addition_subition.expression,multiplication.expression)};
+	power = {exp} expr | {dmult} power dmult expr;
+	multiplication= {power} power|{mult} multiplication mult power;
+	expression={multiplication} multiplication|{add} expression plus multiplication ;
 	
 	
-	value{-> expression} = {fun_call} id dot function_call {->New expression.fun_call(id,function_call)}| {number} number {->New expression.number(number)} | {str} string {-> New expression.str(string)}| {none}none {->New expression.none(none)}; 
+	value = {fun_call} id dot function_call
+			| {none} none
+			| {string} string
+			| {number} number;
 	
 	
 
 	/* GROUPS */
-	group_func_stat = {function} function {->New group_func_stat.function(function)}|{statement}statement {->New group_func_stat.statement(statement)};
-	group_comma_id_eq_val = comma id group_eq_val? {->New group_comma_id_eq_val(id,[group_eq_val])};
-	group_eq_val = eq value {->New group_eq_val(value.expression)};
-	group_comma_id= comma id group_as_id?{->New group_comma_id(id,[group_as_id])};
-	group_mod= comma module group_as_id? {->New group_mod(module,[group_as_id])};
-	group_id_dot= id dot {->New group_id_dot(id)};
-	group_comma_val= comma value {->New group_comma_val(value.expression)};
-	group_comma_expr= comma expression {->New group_comma_expr(expression)};
-	group_as_id= as id {->New group_as_id(id)};
+	group_func_stat = {function} function ;
+	group_comma_id_eq_val = comma id group_eq_val? ;
+	group_eq_val = eq value ;
+	group_comma_id= comma id group_as_id?;
+	group_mod= comma module group_as_id? ;
+	group_id_dot= id dot ;
+	group_comma_val= comma value ;
+	group_comma_expr= comma expression ;
+	group_as_id= as id ;
 	
 	/* Arithmetic , Logical , Comparison Operators */
-	comp_eqs = {equal}eq {->New comp_eqs.equal()}|{minus_equal} minus_eq{->New comp_eqs.minus_equal()}|{div_equal} div_eq{->New comp_eqs.div_equal()};
-	comp_types= {less} less{->New comp_types.less()}| {great} great{->New comp_types.great()}| {great_equal} great_eq{->New comp_types.great_equal()}|{less_equal} less_eq{->New comp_types.less_equal()}| {not_equal} not_eq{->New comp_types.not_equal()}| {equal} equal{->New comp_types.equal()};
-	max_min= {max} max {->New max_min.max()} | {min} min {->New max_min.min()};
+	comp_eqs = {equal}eq ;
+	comp_types= {less} less;
+	max_min= {max} max ;
 	
 	
 
 		
 	/*Priorities for comparisons*/
-	not_comp{->comparison}= {boolean} comparison{->comparison}|{not} not comparison{->New comparison.not(comparison)};
-	and_comp{->comparison}= {not_from_and} not_comp{->not_comp.comparison}|{and} and_comp and not_comp{->New comparison.and(and_comp.comparison,not_comp.comparison)};
-	or_comp{->comparison}= {and_from_or} and_comp{->and_comp.comparison}|{or} or_comp or and_comp{->New comparison.or(or_comp.comparison,and_comp.comparison)};
+	not_comp= {boolean} comparison|{not} not comparison;
+	and_comp= {not_from_and} not_comp|{and} and_comp and not_comp;
+	or_comp= {and_from_or} and_comp|{or} or_comp or and_comp;
 
 	
 	
@@ -156,7 +162,7 @@ Productions
 	
 	
 	
-	
+	/*
 	Abstract Syntax Tree
 	goal = group_func_stat*;
 
@@ -211,7 +217,7 @@ Productions
 	
 		
 
-	/* GROUPS */
+	/* GROUPS *
 	group_func_stat = {function} function|{statement}statement;
 	group_comma_id_eq_val = id group_eq_val*;
 	group_eq_val = expression;
@@ -222,12 +228,12 @@ Productions
 	group_comma_expr= expression;
 	group_as_id= id;
 	
-	/* Arithmetic , Logical , Comparison Operators */
+	/* Arithmetic , Logical , Comparison Operators *
 	comp_eqs = {equal}|{minus_equal} |{div_equal};
 	comp_types= {less} | {great} | {great_equal} |{less_equal} | {not_equal} | {equal} ;
 	max_min= {max}  | {min};
 	
 	
 
-		
+		*/
 	
