@@ -145,4 +145,75 @@ Productions
 	or_comp= {and_from_or} and_comp|{or} or_comp or and_comp;
 
 	/*Abstract Syntax Tree*/
+	goal = group_func_stat*;
+
+	function = id argument* statement;
+
+	argument = id group_eq_val* group_comma_id_eq_val*;
+
+	statement = {if}  comparison statement|
+				{while}  comparison  statement|
+				{for}  [id1]: id  [id2]: id statement|
+				{return} expression|
+				{print} expression group_comma_expr*|
+				{assing} id comp_eqs expression|
+				{array} id [expression1]:expression [expression2]: expression|
+				{assert} expression group_comma_expr*|
+				{function_call} function_call;
+				
+
+	expression={something} something|
+	{dmult} [power]:expression [value]: expression|	
+		{mult} [multiplication]:expression [power]: expression|
+			{div} [multiplication]:expression [power]: expression |
+			 {percent} [multiplication]:expression [power]: expression|
+			 {add} [addition]: expression [multiplication]: expression|
+			 {sub} [subition]:expression [multiplication]: expression|			
+			{id_br}id expression|
+			{function_c}function_call|
+			{identifier}id|
+			{len} expression |
+			{expr_max_min}max_min expression group_comma_val* |
+			{group_expression_in_br} expression group_comma_expr*
+			|{fun_call} id function_call| {number} number | {str} string | {none}none;
+
+			
+			
+
+	import_type = {simply_import} group_as_id* group_mod*|
+			{from_import} id group_as_id* group_comma_id* ;
+
+	module= group_id_dot* id;
+
+	comparison= {compare_expression} [expression1]:expression comp_types [expression2]:expression|
+		{not} comparison|
+		{and} [comp1]: comparison [comp2]:comparison|
+		{or} [comp1]: comparison [comp2]:comparison|
+			{true} |
+			{false} ; 
+
+	function_call=  id arglist*;
+	arglist= {group_expression} expression group_comma_expr*;
+
+	
+	
+	/*value = {fun_call} id function_call| {number} number | {str} string | {none}none;*/
+	
+		
+
+	/* GROUPS */
+	group_func_stat = {function} function|{statement}statement;
+	group_comma_id_eq_val = id group_eq_val*;
+	group_eq_val = expression;
+	group_comma_id= id group_as_id*;
+	group_mod=  module group_as_id*;
+	group_id_dot= id;
+	group_comma_val= expression;
+	group_comma_expr= expression;
+	group_as_id= id;
+	
+	/* Arithmetic , Logical , Comparison Operators */
+	comp_eqs = {equal}|{minus_equal} |{div_equal};
+	comp_types= {less} | {great} | {great_equal} |{less_equal} | {not_equal} | {equal} ;
+	max_min= {max}  | {min};
 	
