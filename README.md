@@ -13,3 +13,13 @@ java ParserTest2 example.py
 Τhe tree will be created by the example.py, which covers the
 most cases. The example.py does not contain a check for complex use of and, or and not,
 because we have had difficulty in implementing them in the grammar archive.
+
+## Part 2
+We implemented the AST in the .grammar file. The purpose of AST is to create a simpler and easy-to-use tree to help us later in debugging the code.
+**Run:**
+```
+sablecc minipython.grammar
+javac ASTTest1.java
+javac ASTPrinter.java
+java ASTTest1 example.py
+```
